@@ -1,9 +1,14 @@
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import App from './App.jsx'
+import './index.css'
 
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+createRoot(document.getElementById('root')).render(
+  <React.StrictMode><App /></React.StrictMode>
+)
 
-function App() {
-  return <h1 style={{textAlign:'center',marginTop:'40px'}}>Sirius Training</h1>;
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
 }
-
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
